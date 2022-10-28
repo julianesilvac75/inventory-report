@@ -656,7 +656,7 @@ Como no requisito anterior, o método ainda receberá como primeiro parâmetro u
 
 De acordo com os parâmetros recebidos, deve recuperar os dados do arquivo e chamar o método de gerar relatório correspondente à entrada passada. Ou seja, o método da classe `Inventory` deve chamar o método `generate` da classe que vai gerar o relatório (`SimpleReport`, `CompleteReport`).
 
-
+*Dica: 👀 Dê uma olhada na biblioteca externa `xmltodict`*
 <details>
   <summary>
     <b>🤖 O que será verificado pelo avaliador</b>
