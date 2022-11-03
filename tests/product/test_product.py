@@ -39,11 +39,16 @@ def test_cria_produto():
     assert type(new_product.nome_da_empresa) is str
 
     assert hasattr(new_product, "data_de_fabricacao") is True
-    assert new_product.data_de_fabricacao == product_mock["data_de_fabricacao"]
+    assert (
+        new_product.data_de_fabricacao
+        == str(product_mock["data_de_fabricacao"])
+        )
     assert type(new_product.data_de_fabricacao) is str
 
     assert hasattr(new_product, "data_de_validade") is True
-    assert new_product.data_de_validade == product_mock["data_de_validade"]
+    assert (
+        new_product.data_de_validade == str(product_mock["data_de_validade"])
+        )
     assert type(new_product.data_de_validade) is str
 
     assert hasattr(new_product, "numero_de_serie") is True
