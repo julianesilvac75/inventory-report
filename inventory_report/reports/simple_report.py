@@ -34,8 +34,20 @@ class SimpleReport:
         return min(dates)
 
     @classmethod
-    def __get_company_with_most_products(cls, list):
+    def __get_products_by_company(cls, list):
         companies = {}
+
+        for product in list:
+            if product["nome_da_empresa"] not in companies:
+                companies[product["nome_da_empresa"]] = 0
+
+            companies[product["nome_da_empresa"]] += 1
+
+        return companies
+
+    @classmethod
+    def __get_company_with_most_products(cls, list):
+        companies = cls.__get_products_by_company(list)
 
         for product in list:
             if product["nome_da_empresa"] not in companies:
