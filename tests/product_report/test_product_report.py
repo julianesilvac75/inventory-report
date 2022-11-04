@@ -1,4 +1,3 @@
-import datetime
 from inventory_report.inventory.product import Product
 
 product_string_mock = (
