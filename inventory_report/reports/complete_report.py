@@ -1,4 +1,3 @@
-# from inventory_report.reports.simple_report import SimpleReport
 from simple_report import SimpleReport
 
 
@@ -7,8 +6,7 @@ class CompleteReport(SimpleReport):
     def generate(cls, list):
         simple_report = super().generate(list)
         report = "\nProdutos estocados por empresa:"
-        products_by_company = super().__get_products_by_company(list)
-        # a, b, c = 1, 2, 3
+        products_by_company = super().get_products_by_company(list)
 
         for company, quantity in products_by_company.items():
             report += f"\n- {company}: {quantity}"
