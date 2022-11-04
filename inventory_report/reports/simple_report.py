@@ -4,9 +4,9 @@ from datetime import datetime
 class SimpleReport:
     @classmethod
     def generate(cls, list):
-        fabrication_date = cls.__get_oldest_product(list)
-        validation_date = cls.__get_nearest_validation_date(list)
-        company = cls.__get_company_with_most_products(list)
+        fabrication_date = cls.get_oldest_product(list)
+        validation_date = cls.get_nearest_validation_date(list)
+        company = cls.get_company_with_most_products(list)
 
         return (
             f"Data de fabricação mais antiga: {fabrication_date}\n"
@@ -15,13 +15,13 @@ class SimpleReport:
         )
 
     @classmethod
-    def __get_oldest_product(cls, list):
+    def get_oldest_product(cls, list):
         dates = [product["data_de_fabricacao"] for product in list]
 
         return min(dates)
 
     @classmethod
-    def __get_nearest_validation_date(cls, list):
+    def get_nearest_validation_date(cls, list):
         dates = []
         today = datetime.today().date()
 
@@ -34,7 +34,7 @@ class SimpleReport:
         return min(dates)
 
     @classmethod
-    def __get_products_by_company(cls, list):
+    def get_products_by_company(cls, list):
         companies = {}
 
         for product in list:
@@ -46,8 +46,8 @@ class SimpleReport:
         return companies
 
     @classmethod
-    def __get_company_with_most_products(cls, list):
-        companies = cls.__get_products_by_company(list)
+    def get_company_with_most_products(cls, list):
+        companies = cls.get_products_by_company(list)
 
         for product in list:
             if product["nome_da_empresa"] not in companies:
