@@ -1,18 +1,18 @@
-from simple_report import SimpleReport
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class CompleteReport(SimpleReport):
     @classmethod
     def generate(cls, list):
         simple_report = super().generate(list)
-        report = "\nProdutos estocados por empresa:"
+        report = "Produtos estocados por empresa:\n"
         products_by_company = super().get_products_by_company(list)
 
         for company, quantity in products_by_company.items():
-            report += f"\n- {company}: {quantity}"
+            report += f"- {company}: {quantity}\n"
 
         return (
-            simple_report +
+            f"{simple_report}\n" +
             report
             )
 
