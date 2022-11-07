@@ -2,7 +2,9 @@ import csv
 import json
 import xmltodict
 
-
+# from inventory_report.importer.csv_importer import CsvImporter
+# from inventory_report.importer.json_importer import JsonImporter
+# from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -10,21 +12,27 @@ from inventory_report.reports.complete_report import CompleteReport
 class Inventory:
     @classmethod
     def import_data(cls, file, type):
-        if file.endswith(".csv"):
-            products_list = cls.get_csv_file(file)
+        products_list = cls.get_products(file)
 
-        if file.endswith("json"):
-            products_list = cls.get_json_file(file)
-
-        if file.endswith("xml"):
-            products_list = cls.get_xml_file(file)
-
-        if type == "simples":
-            return SimpleReport.generate(products_list)
-        elif type == "completo":
-            return CompleteReport.generate(products_list)
+        if type.lower() == "simples":
+            report = SimpleReport.generate(products_list)
         else:
-            raise ValueError
+            report = CompleteReport.generate(products_list)
+
+        return report
+
+    @classmethod
+    def get_products(cls, file):
+        products = []
+
+        if file.endswith("csv"):
+            products = cls.get_csv_file(file)
+        if file.endswith("json"):
+            products = cls.get_json_file(file)
+        else:
+            products = cls.get_xml_file(file)
+
+        return products
 
     @classmethod
     def get_csv_file(cls, file):

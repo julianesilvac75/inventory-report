@@ -5,7 +5,7 @@ from inventory_report.importer.importer import Importer
 class CsvImporter(Importer):
     @classmethod
     def import_data(cls, file):
-        if file.endswith(".csv") is False:
+        if file.endswith(".csv") is not True:
             raise ValueError("Arquivo inválido")
             return
 
