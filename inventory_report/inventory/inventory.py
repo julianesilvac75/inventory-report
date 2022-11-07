@@ -16,14 +16,9 @@ class Inventory:
 
         if file.endswith("csv"):
             with open(file) as csv_file:
-<<<<<<< HEAD
                 products = csv.DictReader(
                     csv_file, delimiter=",", quotechar='"'
                 )
-=======
-                products = csv.DictReader(csv_file, delimiter=",", quotechar='"')
->>>>>>> parent of 749ad69... refactor: import_data method for Inventory class
-
                 product_list = [row for row in products]
 
         if file.endswith("json"):
@@ -42,13 +37,7 @@ class Inventory:
         elif type == "completo":
             return CompleteReport.generate(product_list)
         else:
-<<<<<<< HEAD
-            products = cls.get_xml_file(file)
-
-        return products
-=======
             raise ValueError
->>>>>>> parent of 749ad69... refactor: import_data method for Inventory class
 
 
 if __name__ == "__main__":
